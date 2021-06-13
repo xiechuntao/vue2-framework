@@ -1,8 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <el-container id="app" class="default-theme">
+    <el-header>Header
+      <el-button>
+        test
+      </el-button>
+    </el-header>
+    <el-container>
+      <el-aside width="200px">Aside</el-aside>
+      <el-main>
+        <HelloWorld />
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -16,13 +25,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  .el-header, .el-aside {
+    background: #409EFF;
+  }
+  span {
+    color: blue;
+  }
+  
 }
 </style>
