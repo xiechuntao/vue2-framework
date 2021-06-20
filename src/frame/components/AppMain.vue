@@ -24,8 +24,8 @@ export default {
 
 <style lang="stylus" scoped>
 .app-main {
-  /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  /* 50=navbar  35=breadCrumbs */
+  min-height: calc(100vh - 50px - 35px);
   width: 100%;
   position: relative;
   overflow: hidden;

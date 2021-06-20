@@ -18,7 +18,11 @@
             <i class="el-icon-setting" />
             <span slot="title">首页</span>
           </el-menu-item>
-          <el-submenu index="1">
+          <el-menu-item index="1">
+            <i class="el-icon-document" />
+            <span slot="title">关于我</span>
+          </el-menu-item>
+          <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-location" />
               <span>项目链</span>
@@ -36,14 +40,11 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="2">
+          <el-menu-item index="3">
             <i class="el-icon-menu" />
             <span slot="title">图书馆</span>
           </el-menu-item>
-          <el-menu-item index="3">
-            <i class="el-icon-document" />
-            <span slot="title">关于我</span>
-          </el-menu-item>
+
           <el-menu-item index="4">
             <i class="el-icon-setting" />
             <span slot="title">更多</span>
