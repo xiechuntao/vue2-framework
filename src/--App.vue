@@ -1,8 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <transition name="fade-transform" mode="out-in">
+    <keep-alive>
+      <el-container
+        id="app"
+        :key="k"
+        class="default-theme"
+      >
+        <el-header>Header
+          <el-button @click="openPane">
+            test
+          </el-button>
+        </el-header>
+        <el-container>
+          <el-aside width="200px">Aside</el-aside>
+          <el-main>
+            <!-- tabs bar -->
+            <!-- @tab-remove="removeTab" -->
+            <el-tabs
+              v-model="editableTabsValue"
+              type="card"
+              closable
+            >
+              <el-tab-pane
+                v-for="(item, index) in editableTabs"
+                :key="item.name"
+                :class="`tag-${index}`"
+                :label="item.title"
+                :name="item.name"
+              >
+                <component :is="item.componentName" />
+              </el-tab-pane>
+            </el-tabs>
+          </el-main>
+        </el-container>
+      </el-container>
+    </keep-alive>
+  </transition>
 </template>
 
 <script>
@@ -12,17 +45,61 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      k: 0,
+      editableTabsValue: '',
+      editableTabs: [{
+        label: 'test',
+        title: 'test2',
+        name: '1',
+        componentName: 'HelloWorld'
+      }, {
+        label: '2',
+        title: '2',
+        name: '2',
+        componentName: 'HelloWorld'
+      }]
+    }
+  },
+  methods: {
+    openPane() {
+      this.k++
+      this.editableTabs.push({
+        label: this.editableTabs.length,
+        title: this.editableTabs.length,
+        name: this.editableTabs.length
+      })
+    }
+    // removeTab(targetName) {
+    //   const tabs = this.editableTabs
+    //   let activeName = this.editableTabsValue
+    //   if (activeName === targetName) {
+    //     tabs.forEach((tab, index) => {
+    //       if (tab.name === targetName) {
+    //         const nextTab = tabs[index + 1] || tabs[index - 1]
+    //         if (nextTab) {
+    //           activeName = nextTab.name
+    //         }
+    //       }
+    //     })
+    //   }
+    //   this.editableTabsValue = activeName
+    //   this.editableTabs = tabs.filter(tab => tab.name !== targetName)
+    // }
   }
 }
 </script>
 
-<style>
+<style lang="stylus" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  .el-header, .el-aside {
+    background: #409EFF;
+  }
+
+  span {
+    color: blue;
+  }
 }
 </style>
